@@ -1,91 +1,56 @@
-# 247 GYM Backend
+# 247 GYM Frontend
 
-Express.js backend server for the 247 GYM fitness website.
+React-ready frontend for the 247 GYM fitness website.
 
 ## Project Structure
 
 ```
-backend/
-├── server.js              # Main server file
-├── package.json           # Dependencies and scripts
-├── .env                   # Environment variables
-├── routes/                # API route handlers
-│   ├── classes.js        # Classes endpoints
-│   ├── trainers.js       # Trainers endpoints
-│   ├── memberships.js    # Membership plans endpoints
-│   └── contact.js        # Contact form endpoints
-├── controllers/          # Business logic (future)
-└── models/              # Data models (future)
+frontend/
+├── index.html           # Main HTML file
+├── styles.css          # Styling
+├── script.js           # JavaScript functionality
+└── README.md           # This file
 ```
-
-## Installation
-
-1. Navigate to the backend directory:
-```bash
-cd backend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Create a `.env` file:
-```
-PORT=5000
-NODE_ENV=development
-```
-
-## Running the Server
-
-### Development (with auto-reload):
-```bash
-npm run dev
-```
-
-### Production:
-```bash
-npm start
-```
-
-The server will start on `http://localhost:5000`
-
-## API Endpoints
-
-### Classes
-- `GET /api/classes` - Get all classes
-- `GET /api/classes/:id` - Get single class
-
-### Trainers
-- `GET /api/trainers` - Get all trainers
-- `GET /api/trainers/:id` - Get single trainer
-
-### Memberships
-- `GET /api/memberships` - Get all membership plans
-- `GET /api/memberships/:id` - Get single membership
-
-### Contact
-- `POST /api/contact` - Submit contact form
-- `GET /api/contact` - Get all submissions (admin)
-
-### Health Check
-- `GET /api/health` - Server health status
 
 ## Features
 
-- ✅ Express.js server
-- ✅ CORS enabled for frontend communication
-- ✅ Static file serving (frontend)
-- ✅ RESTful API endpoints
-- ✅ Error handling middleware
-- ✅ SPA fallback routing
+- 🎨 Modern, responsive design
+- 💨 Fast loading with Tailwind CSS
+- 📱 Mobile-friendly interface
+- ♿ Accessible components
+- 🎯 Smooth animations and transitions
+- 🌙 Dark theme with teal accents
+
+## Running
+
+Simply open `index.html` in a web browser or serve through the backend server:
+
+```bash
+npm start  # from backend directory
+```
+
+Then visit `http://localhost:5000`
+
+## Styling
+
+Uses Tailwind CSS via CDN with custom configuration:
+- Custom color palette (brand colors)
+- Custom animations (glow, float)
+- Glass morphism effects
+- Responsive typography
+
+## JavaScript
+
+- Mobile menu toggle
+- Navbar scroll effects
+- Timetable day selection
+- Smooth scrolling
+- Intersection Observer animations
 
 ## Future Enhancements
 
-- Database integration (MongoDB/PostgreSQL)
-- Authentication & authorization
-- Email notifications
-- Payment processing
-- Admin dashboard
-- User management
-- Class scheduling system
+- React/Vue integration for better component management
+- API integration for dynamic content
+- Form validation
+- User authentication
+- Booking system integration
