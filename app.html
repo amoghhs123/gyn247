@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>247 GYM – The Fitness District | 24/7 Gym in Oud Metha, Dubai</title>
+    <meta name="description" content="Train Any Time. Train Like a Beast. Dubai's premier 24/7 fitness center in Oud Metha with martial arts, group classes, and free parking.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0a0a0a',
+                            charcoal: '#1a1a1a',
+                            dark: '#0f0f0f',
+                            teal: '#00d4ff',
+                            cyan: '#06b6d4',
+                            accent: '#0891b2'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px #00d4ff, 0 0 10px #00d4ff' },
+                            '100%': { boxShadow: '0 0 20px #00d4ff, 0 0 30px #06b6d4' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Premium Feel */
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        /* Teal Glow Effects */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .glow-border {
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .glow-border:hover {
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6), 0 0 40px rgba(6, 182, 212, 0.3);
+        }
+        
+        .btn-glow {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 50px rgba(6, 182, 212, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Gradient Overlays */
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,1) 100%);
+        }
+        
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(15,15,15,0.9) 100%);
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0891b2;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00d4ff;
+        }
+        
+        /* Navigation Blur */
+        .nav-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        /* Image Hover Effects */
+        .img-zoom {
+            overflow: hidden;
+        }
+        .img-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Glass Effect */
+        .glass {
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Loader */
+        .loader {
+            border-top-color: #00d4ff;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div class="text-2xl font-display font-bold tracking-wider">
+                        <span class="text-white">247</span>
+                        <span class="text-brand-teal glow-text">GYM</span>
+                    </div>
+                    <div class="hidden sm:block text-xs text-gray-400 uppercase tracking-widest border-l border-gray-700 pl-2 ml-2">
+                        The Fitness District
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-teal transition-colors">Why Us</a>
+                    <a href="#classes" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-teal transition-colors">Classes</a>
+                    <a href="#trainers" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-teal transition-colors">Trainers</a>
+                    <a href="#pricing" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-teal transition-colors">Membership</a>
+                    <a href="#contact" class="text-sm uppercase tracking-widest text-gray-300 hover:text-brand-teal transition-colors">Contact</a>
+                    <a href="https://wa.me/971585240247" target="_blank" class="bg-brand-teal text-black px-6 py-2 rounded-none font-bold uppercase text-sm tracking-wider btn-glow hover:bg-white transition-colors">
+                        Join Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-charcoal border-t border-gray-800 nav-blur">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#about" class="block px-3 py-3 text-base uppercase tracking-wider text-gray-300 hover:text-brand-teal hover:bg-white/5">Why Us</a>
+                <a href="#classes" class="block px-3 py-3 text-base uppercase tracking-wider text-gray-300 hover:text-brand-teal hover:bg-white/5">Classes</a>
+                <a href="#trainers" class="block px-3 py-3 text-base uppercase tracking-wider text-gray-300 hover:text-brand-teal hover:bg-white/5">Trainers</a>
+                <a href="#pricing" class="block px-3 py-3 text-base uppercase tracking-wider text-gray-300 hover:text-brand-teal hover:bg-white/5">Membership</a>
+                <a href="#contact" class="block px-3 py-3 text-base uppercase tracking-wider text-gray-300 hover:text-brand-teal hover:bg-white/5">Contact</a>
+                <a href="https://wa.me/971585240247" target="_blank" class="block mx-3 mt-4 bg-brand-teal text-black text-center px-6 py-3 rounded-none font-bold uppercase tracking-wider">
+                    Join Now
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" alt="Gym Background" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-black/80 to-transparent"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-float">
+                <p class="text-brand-teal font-bold tracking-[0.3em] uppercase mb-4 text-sm md:text-base">Oud Metha, Dubai</p>
+                <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase leading-none mb-6 tracking-tight">
+                    Train Any Time.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-brand-cyan glow-text">Train Like a Beast.</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-8 font-light">
+                    Dubai's hardest working fitness community. Open 24/7 with premium equipment, martial arts training, and free group classes.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://wa.me/971585240247" target="_blank" class="bg-brand-teal text-black px-8 py-4 rounded-none font-bold uppercase tracking-wider text-lg btn-glow w-full sm:w-auto text-center">
+                        Join Now
+                    </a>
+                    <a href="https://wa.me/971585240247" target="_blank" class="border-2 border-brand-teal text-brand-teal px-8 py-4 rounded-none font-bold uppercase tracking-wider text-lg hover:bg-brand-teal hover:text-black transition-all duration-300 w-full sm:w-auto text-center">
+                        Book Free Trial
+                    </a>
+                </div>
+
+                <!-- Rating Badge -->
+                <div class="mt-12 inline-flex items-center gap-2 glass px-6 py-3 rounded-full">
+                    <div class="flex text-yellow-400 text-sm">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="text-white font-bold">4.5</span>
+                    <span class="text-gray-400 text-sm">(302 reviews)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-brand-teal text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Why 247 GYM -->
+    <section id="about" class="py-20 md:py-32 bg-brand-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">Why 247 <span class="text-brand-teal">GYM</span></h2>
+                <p class="text-xl text-gray-400 italic">"They say we are the best gym in town 😎"</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <!-- Feature 1 -->
+                <div class="card-gradient p-6 border border-gray-800 hover:border-brand-teal transition-all duration-300 hover:transform hover:-translate-y-2 glow-border group">
+                    <div class="text-brand-teal text-4xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">24/7 Access</h3>
+                    <p class="text-gray-400 text-sm">Train on your schedule. Open round the clock, every day of the year.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="card-gradient p-6 border border-gray-800 hover:border-brand-teal transition-all duration-300 hover:transform hover:-translate-y-2 glow-border group">
+                    <div class="text-brand-teal text-4xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Large Workout Area</h3>
+                    <p class="text-gray-400 text-sm">Spacious facility with premium equipment and dedicated zones.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="card-gradient p-6 border border-gray-800 hover:border-brand-teal transition-all duration-300 hover:transform hover:-translate-y-2 glow-border group">
+                    <div class="text-brand-teal text-4xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Free Group Classes</h3>
+                    <p class="text-gray-400 text-sm">High-energy sessions included with every membership tier.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="card-gradient p-6 border border-gray-800 hover:border-brand-teal transition-all duration-300 hover:transform hover:-translate-y-2 glow-border group">
+                    <div class="text-brand-teal text-4xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Martial Arts</h3>
+                    <p class="text-gray-400 text-sm">Professional MMA, Boxing, and combat training programs.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="card-gradient p-6 border border-gray-800 hover:border-brand-teal transition-all duration-300 hover:transform hover:-translate-y-2 glow-border group">
+                    <div class="text-brand-teal text-4xl mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Free Parking</h3>
+                    <p class="text-gray-400 text-sm">Convenient, secure parking available for all members.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="py-20 bg-brand-charcoal relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">Classes & <span class="text-brand-teal">Training</span></h2>
+                <p class="text-gray-400">Programs designed for results</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Class 1 -->
+                <div class="group relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t39.30808-6/467013984_18047142611491299_2644295333219251914_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=KGU0iQ6d2FUQ7kNvwFBMiCc&_nc_oc=AdnCCRFEtkLOCznrjnJqHk45rtVoTMB_NSvoQnb6mI-NUeJeXWYDKkn5V5Q7tPVAcajgmQxC-PzMOUhdERGmg1cY&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=6ckOtCrC3AQbmPx0vX5J9A&oh=00_AfoqPoqOKZjNpcKB__KoEnvdafNqJWiMIZe1fQEHqHeaDg&oe=6980E845" alt="Strength Training" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent"></div>
+                    </div>
+                    <div class="p-6 bg-brand-dark relative">
+                        <div class="absolute -top-8 right-6 w-12 h-12 bg-brand-teal flex items-center justify-center text-black text-xl">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-2">Strength Training</h3>
+                        <p class="text-gray-400 mb-4">Build muscle and power with our comprehensive weight training programs.</p>
+                        <a href="https://wa.me/971585240247" class="text-brand-teal uppercase text-sm font-bold tracking-wider hover:text-white transition-colors">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Class 2 -->
+                <div class="group relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t39.30808-6/466973655_18047123168491299_932433996989184341_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Dy7Sxk-i0QYQ7kNvwEdhfXi&_nc_oc=AdnAmQJ_iZtoyfRwLCKByTPlTGDlHBxT-qa6q_C-74IEQ66plsMVMnQKXDCA2m-BVwWv8dkBigUCB0xZVb8lP1Pe&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=iho9kI_ZS2slIcELSfe5Lg&oh=00_Afq4Do8UXrjSC85e2s3X-YfYlyfb3rU5cskPzwBiaiqgzg&oe=6980E220" alt="Weight Loss" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent"></div>
+                    </div>
+                    <div class="p-6 bg-brand-dark relative">
+                        <div class="absolute -top-8 right-6 w-12 h-12 bg-brand-teal flex items-center justify-center text-black text-xl">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-2">Weight Loss</h3>
+                        <p class="text-gray-400 mb-4">High-intensity programs designed to maximize fat burn and endurance.</p>
+                        <a href="https://wa.me/971585240247" class="text-brand-teal uppercase text-sm font-bold tracking-wider hover:text-white transition-colors">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Class 3 -->
+                <div class="group relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.fresha.com/lead-images/placeholders/gym-and-fitness-23.jpg?class=venue-gallery-large" alt="Group Classes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent"></div>
+                    </div>
+                    <div class="p-6 bg-brand-dark relative">
+                        <div class="absolute -top-8 right-6 w-12 h-12 bg-brand-teal flex items-center justify-center text-black text-xl">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-2">Group Classes</h3>
+                        <p class="text-gray-400 mb-4">Energy-packed sessions from HIIT to functional training.</p>
+                        <a href="https://wa.me/971585240247" class="text-brand-teal uppercase text-sm font-bold tracking-wider hover:text-white transition-colors">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Class 4 -->
+                <div class="group relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t39.30808-6/474777721_615295527548996_3747759326071981058_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=_1JXN12S-cQQ7kNvwEXgwOY&_nc_oc=Adkl5979snL7HGyP-wOAm8bNgcXfIPsZx7BO5-Vz4tUCPPAlhPRTt1qTDbVCB0kp14Fkjq4P01kLSYrkK24vNrYJ&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=_pdbsaN9ou61EjRiIhqSJg&oh=00_AfprfGM_AQpFr0HTa-2zHoZwX-LjXmcPU6Sahf9S-5XlXw&oe=6980D2D6" alt="Martial Arts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent"></div>
+                    </div>
+                    <div class="p-6 bg-brand-dark relative">
+                        <div class="absolute -top-8 right-6 w-12 h-12 bg-brand-teal flex items-center justify-center text-black text-xl">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-2">Martial Arts</h3>
+                        <p class="text-gray-400 mb-4">Boxing, MMA, and self-defense with professional fighters.</p>
+                        <a href="https://wa.me/971585240247" class="text-brand-teal uppercase text-sm font-bold tracking-wider hover:text-white transition-colors">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- Class 5 -->
+                <div class="group relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-500">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t51.75761-15/469921234_18050317937491299_1430433333101984440_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-JzIZXm06OIQ7kNvwGS97ba&_nc_oc=AdlkzL5cd4ilfY_hQD0qbwVHogtMF0giYZ1AuVAjdVN6DCKwIZXtAb2MPykucLZSepKRlAfrCqTWWi_2jSFYDTw_&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=O7KgYd3Xnq37mhmuF4amng&oh=00_AfrtbcfYh4kkmdslK--9UFDn3IlQum0AeJU0vOJFfy15uw&oe=6980F294" alt="Personal Training" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black to-transparent"></div>
+                    </div>
+                    <div class="p-6 bg-brand-dark relative">
+                        <div class="absolute -top-8 right-6 w-12 h-12 bg-brand-teal flex items-center justify-center text-black text-xl">
+                            <i class="fas fa-user-ninja"></i>
+                        </div>
+                        <h3 class="font-display text-2xl font-bold uppercase mb-2">Personal Training</h3>
+                        <p class="text-gray-400 mb-4">One-on-one coaching tailored to your specific goals.</p>
+                        <a href="https://wa.me/971585240247" class="text-brand-teal uppercase text-sm font-bold tracking-wider hover:text-white transition-colors">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+                </div>
+
+                <!-- CTA Card -->
+                <div class="border border-brand-teal bg-brand-teal/10 flex flex-col items-center justify-center p-8 text-center">
+                    <i class="fas fa-calendar-check text-5xl text-brand-teal mb-4"></i>
+                    <h3 class="font-display text-2xl font-bold uppercase mb-4">Not Sure What to Choose?</h3>
+                    <p class="text-gray-300 mb-6">Book a free consultation and we'll help you find the perfect program.</p>
+                    <a href="https://wa.me/971585240247" target="_blank" class="bg-brand-teal text-black px-6 py-3 rounded-none font-bold uppercase tracking-wider w-full hover:bg-white transition-colors">
+                        Book Free Trial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="py-20 md:py-32 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">Elite <span class="text-brand-teal">Trainers</span></h2>
+                <p class="text-gray-400">Learn from the best in Dubai</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Trainer 1 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-300 glow-border">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t51.75761-15/474083365_18054890918491299_1620139050077449774_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=TzOulABL_MAQ7kNvwGOTkjO&_nc_oc=Adk8NyZ11fIUz5ZpoLJS9dACqBE4zJUw8ybXrVUlgob1dQE4Y9dTkN7K_v-J0BtKMElan2d7h7GY10RnCG6n8sju&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=q-Jo7pOJ4n_SRVnDjiopHg&oh=00_Afqrrzq3J6W1F1EygA8Pkf3Bo_taDAzT_KeljuEt--f-NA&oe=6980D234" alt="Trainer" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6">
+                            <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-display text-2xl font-bold uppercase text-white">Ahmed Hassan</h3>
+                                <p class="text-brand-teal font-semibold mb-2">Strength & Conditioning</p>
+                                <p class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">10+ years experience. Certified NSCA-CPT. Specializes in powerlifting and athletic performance.</p>
+                                <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                    <a href="#" class="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-teal hover:text-black transition-colors"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainer 2 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-300 glow-border">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t51.75761-15/469921234_18050317937491299_1430433333101984440_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=-JzIZXm06OIQ7kNvwGS97ba&_nc_oc=AdlkzL5cd4ilfY_hQD0qbwVHogtMF0giYZ1AuVAjdVN6DCKwIZXtAb2MPykucLZSepKRlAfrCqTWWi_2jSFYDTw_&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=O7KgYd3Xnq37mhmuF4amng&oh=00_AfrtbcfYh4kkmdslK--9UFDn3IlQum0AeJU0vOJFfy15uw&oe=6980F294" alt="Trainer" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6">
+                            <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-display text-2xl font-bold uppercase text-white">Marco Silva</h3>
+                                <p class="text-brand-teal font-semibold mb-2">MMA & Boxing</p>
+                                <p class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Former pro fighter. Black belt BJJ. Expert in striking and ground game techniques.</p>
+                                <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                    <a href="#" class="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-teal hover:text-black transition-colors"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="group relative">
+                    <div class="relative overflow-hidden border border-gray-800 hover:border-brand-teal transition-all duration-300 glow-border">
+                        <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t51.82787-15/530221536_18077447561491299_970718783528226615_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=9SE1zH2RVScQ7kNvwEJULEk&_nc_oc=AdkMwYkFkuX6NCDZGOYK97VAAE5qBXNhzsv-4ZK2NUzFRLNkP4VhWX-4Jy0ZWLyORANWwOvJRU4RQQjBHmbk6rGc&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=uhvK-ktosNQJO3ykBINo5w&oh=00_AfrFFCcAu4-sc70gG2h90YCMXT8eGTNMHjSk2Ce89YByjg&oe=6980F712" alt="Trainer" class="w-full h-96 object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-6">
+                            <div class="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                                <h3 class="font-display text-2xl font-bold uppercase text-white">Sarah Chen</h3>
+                                <p class="text-brand-teal font-semibold mb-2">HIIT & Weight Loss</p>
+                                <p class="text-gray-400 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Nutrition specialist. CrossFit Level 2 Trainer. Transforming bodies through science.</p>
+                                <div class="flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+                                    <a href="#" class="w-8 h-8 bg-white/10 flex items-center justify-center hover:bg-brand-teal hover:text-black transition-colors"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timetable Section -->
+    <section class="py-20 bg-brand-charcoal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">Class <span class="text-brand-teal">Schedule</span></h2>
+                <p class="text-gray-400">Find your perfect training time</p>
+            </div>
+
+            <!-- Mobile Tabs -->
+            <div class="flex overflow-x-auto pb-4 mb-8 gap-2 md:hidden">
+                <button onclick="showDay('mon')" class="day-btn px-4 py-2 bg-brand-teal text-black font-bold uppercase text-sm whitespace-nowrap" data-day="mon">Mon</button>
+                <button onclick="showDay('tue')" class="day-btn px-4 py-2 bg-gray-800 text-white font-bold uppercase text-sm whitespace-nowrap" data-day="tue">Tue</button>
+                <button onclick="showDay('wed')" class="day-btn px-4 py-2 bg-gray-800 text-white font-bold uppercase text-sm whitespace-nowrap" data-day="wed">Wed</button>
+                <button onclick="showDay('thu')" class="day-btn px-4 py-2 bg-gray-800 text-white font-bold uppercase text-sm whitespace-nowrap" data-day="thu">Thu</button>
+                <button onclick="showDay('fri')" class="day-btn px-4 py-2 bg-gray-800 text-white font-bold uppercase text-sm whitespace-nowrap" data-day="fri">Fri</button>
+                <button onclick="showDay('sat')" class="day-btn px-4 py-2 bg-gray-800 text-white font-bold uppercase text-sm whitespace-nowrap" data-day="sat">Sat</button>
+                <button onclick="showDay('sun')" class="day-btn px-4 py-2 bg-gray-800 text-white font-bold uppercase text-sm whitespace-nowrap" data-day="sun">Sun</button>
+            </div>
+
+            <!-- Desktop Table -->
+            <div class="hidden md:block overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-brand-teal">
+                            <th class="py-4 px-4 text-brand-teal uppercase tracking-wider">Time</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Monday</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Tuesday</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Wednesday</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Thursday</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Friday</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Saturday</th>
+                            <th class="py-4 px-4 text-white uppercase tracking-wider">Sunday</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-gray-800 hover:bg-white/5 transition-colors">
+                            <td class="py-4 px-4 text-brand-teal font-bold">06:00 - 07:00</td>
+                            <td class="py-4 px-4">HIIT Blast</td>
+                            <td class="py-4 px-4">Strength 101</td>
+                            <td class="py-4 px-4">Boxing</td>
+                            <td class="py-4 px-4">HIIT Blast</td>
+                            <td class="py-4 px-4">Yoga Flow</td>
+                            <td class="py-4 px-4">Open Gym</td>
+                            <td class="py-4 px-4">Open Gym</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5 transition-colors">
+                            <td class="py-4 px-4 text-brand-teal font-bold">18:00 - 19:00</td>
+                            <td class="py-4 px-4">MMA Basics</td>
+                            <td class="py-4 px-4">CrossFit</td>
+                            <td class="py-4 px-4">MMA Basics</td>
+                            <td class="py-4 px-4">CrossFit</td>
+                            <td class="py-4 px-4">Boxing</td>
+                            <td class="py-4 px-4">Strength Camp</td>
+                            <td class="py-4 px-4">Rest Day</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5 transition-colors">
+                            <td class="py-4 px-4 text-brand-teal font-bold">19:00 - 20:00</td>
+                            <td class="py-4 px-4">Powerlifting</td>
+                            <td class="py-4 px-4">MMA Advanced</td>
+                            <td class="py-4 px-4">Powerlifting</td>
+                            <td class="py-4 px-4">MMA Advanced</td>
+                            <td class="py-4 px-4">Kettlebell</td>
+                            <td class="py-4 px-4">Cardio Kick</td>
+                            <td class="py-4 px-4">Rest Day</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-white/5 transition-colors">
+                            <td class="py-4 px-4 text-brand-teal font-bold">20:00 - 21:00</td>
+                            <td class="py-4 px-4">Night Warrior</td>
+                            <td class="py-4 px-4">Night Warrior</td>
+                            <td class="py-4 px-4">Night Warrior</td>
+                            <td class="py-4 px-4">Night Warrior</td>
+                            <td class="py-4 px-4">Open Mat</td>
+                            <td class="py-4 px-4">-</td>
+                            <td class="py-4 px-4">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mobile View -->
+            <div id="mobile-timetable" class="md:hidden space-y-4">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 md:py-32 bg-brand-black relative">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-teal to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-4">Membership <span class="text-brand-teal">Plans</span></h2>
+                <p class="text-gray-400">Invest in yourself. No hidden fees.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Monthly Plan -->
+                <div class="border border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 bg-brand-charcoal/50 flex flex-col">
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Monthly</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-white">AED 299</span>
+                        <span class="text-gray-400 ml-2">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Full 24/7 Access</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Free Parking</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Locker Access</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> 4 Group Classes/Month</li>
+                    </ul>
+                    <a href="https://wa.me/971585240247" class="border border-brand-teal text-brand-teal text-center py-3 font-bold uppercase tracking-wider hover:bg-brand-teal hover:text-black transition-all duration-300">Join Now</a>
+                </div>
+
+                <!-- Quarterly Plan (Popular) -->
+                <div class="border-2 border-brand-teal p-8 relative bg-brand-charcoal transform md:-translate-y-4 flex flex-col glow-border">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-teal text-black px-4 py-1 text-xs font-bold uppercase tracking-wider">
+                        Most Popular
+                    </div>
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Quarterly</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-white">AED 799</span>
+                        <span class="text-gray-400 ml-2">/3 months</span>
+                    </div>
+                    <div class="text-brand-teal text-sm mb-6 font-semibold">Save AED 98</div>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Full 24/7 Access</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Free Parking</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Premium Locker</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Unlimited Group Classes</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> 1 PT Session FREE</li>
+                    </ul>
+                    <a href="https://wa.me/971585240247" class="bg-brand-teal text-black text-center py-3 font-bold uppercase tracking-wider hover:bg-white transition-all duration-300 btn-glow">Join Now</a>
+                </div>
+
+                <!-- Yearly Plan -->
+                <div class="border border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 bg-brand-charcoal/50 flex flex-col">
+                    <h3 class="font-display text-xl font-bold uppercase mb-2">Yearly</h3>
+                    <div class="flex items-baseline mb-6">
+                        <span class="text-4xl font-bold text-white">AED 2,499</span>
+                        <span class="text-gray-400 ml-2">/year</span>
+                    </div>
+                    <div class="text-brand-teal text-sm mb-6 font-semibold">Save AED 1,089</div>
+                    <ul class="space-y-3 mb-8 flex-grow">
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Full 24/7 Access</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Free Parking</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Premium Locker</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Unlimited Classes</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> 4 PT Sessions FREE</li>
+                        <li class="flex items-center text-gray-300"><i class="fas fa-check text-brand-teal mr-3"></i> Nutrition Plan</li>
+                    </ul>
+                    <a href="https://wa.me/971585240247" class="border border-brand-teal text-brand-teal text-center py-3 font-bold uppercase tracking-wider hover:bg-brand-teal hover:text-black transition-all duration-300">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-brand-charcoal relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 mb-4">
+                    <div class="flex text-yellow-400 text-xl">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white">4.5</span>
+                    <span class="text-gray-400">(302 reviews)</span>
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase">Member <span class="text-brand-teal">Stories</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="bg-brand-black p-6 border border-gray-800 relative">
+                    <i class="fas fa-quote-right absolute top-4 right-4 text-brand-teal/20 text-4xl"></i>
+                    <div class="flex text-yellow-400 text-sm mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Best gym in Oud Metha! The 24/7 access is a game changer for my schedule. Equipment is top-notch and always clean."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-brand-teal/20 rounded-full flex items-center justify-center text-brand-teal font-bold mr-3">KM</div>
+                        <div>
+                            <div class="font-bold text-white">Khalid M.</div>
+                            <div class="text-xs text-gray-500">Member since 2023</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-brand-black p-6 border border-gray-800 relative">
+                    <i class="fas fa-quote-right absolute top-4 right-4 text-brand-teal/20 text-4xl"></i>
+                    <div class="flex text-yellow-400 text-sm mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4">"The martial arts program here is incredible. Marco is a fantastic coach who really knows how to push you while keeping technique perfect."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-brand-teal/20 rounded-full flex items-center justify-center text-brand-teal font-bold mr-3">JS</div>
+                        <div>
+                            <div class="font-bold text-white">James S.</div>
+                            <div class="text-xs text-gray-500">Member since 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-brand-black p-6 border border-gray-800 relative">
+                    <i class="fas fa-quote-right absolute top-4 right-4 text-brand-teal/20 text-4xl"></i>
+                    <div class="flex text-yellow-400 text-sm mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Affordable, community-driven, and never crowded. Free parking makes it so convenient. Definitely the best value in Dubai!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-brand-teal/20 rounded-full flex items-center justify-center text-brand-teal font-bold mr-3">FA</div>
+                        <div>
+                            <div class="font-bold text-white">Fatima A.</div>
+                            <div class="text-xs text-gray-500">Member since 2022</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-20 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl md:text-5xl font-bold uppercase">The <span class="text-brand-teal">Facility</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="img-zoom aspect-square">
+                    <img src="https://advplus.ae/cdn-cgi/image/format=webp,fit=scale-down,quality=80/https://advplus.ae/uploads/club/gallery/1200x683/1752520133xLQKZvyvfaqqWaMJFVoQ1dFrPnZdCG.jpg" alt="Gym Floor" class="w-full h-full object-cover cursor-pointer">
+                </div>
+                <div class="img-zoom aspect-square md:col-span-2 md:row-span-2">
+                    <img src="https://advplus.ae/cdn-cgi/image/format=webp,fit=scale-down,quality=80/https://advplus.ae/uploads/club/gallery/1200x683/1752520135BlumE5aGsmvZwqHhlike1HJy2EcFAV.jpg" alt="Weights Area" class="w-full h-full object-cover cursor-pointer">
+                </div>
+                <div class="img-zoom aspect-square">
+                    <img src="https://advplus.ae/cdn-cgi/image/format=webp,fit=scale-down,quality=80/https://advplus.ae/uploads/club/gallery/1200x683/1752520134KfAhnTG50VALOEKYebZYyhfqZabEjQ.jpg" alt="Equipment" class="w-full h-full object-cover cursor-pointer">
+                </div>
+                <div class="img-zoom aspect-square">
+                    <img src="https://scontent.fixe4-1.fna.fbcdn.net/v/t51.75761-15/476052897_18056652800491299_5562583296730706119_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=aYMLwWaqyM4Q7kNvwG9Wv0u&_nc_oc=AdlAQQd_qJK1zf1lPHQ-ciH1cwoN-a4F1UklLnV9eW2x1oC6Rgc50XKzmy2AloyihyGx_7oa3CfHBo68OwsHbe-l&_nc_zt=23&_nc_ht=scontent.fixe4-1.fna&_nc_gid=U9L7Z4rLbwNH0dinpuP3vQ&oh=00_AfqHWxgNYQPlxt_K2jZpf0-Far_DUgNkfp4ukj7qT-2FVg&oe=6980F75A" alt="Martial Arts" class="w-full h-full object-cover cursor-pointer">
+                </div>
+                <div class="img-zoom aspect-square">
+                    <img src="https://advplus.ae/cdn-cgi/image/format=webp,fit=scale-down,quality=80/https://advplus.ae/uploads/club/gallery/1200x683/17525201357DUkHHgyMCX8pHxBxiGFCu9uoGLApi.jpg" alt="Group Class" class="w-full h-full object-cover cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 md:py-32 bg-brand-charcoal relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold uppercase mb-6">Start Your Fitness<br><span class="text-brand-teal">Journey Today</span></h2>
+                    <p class="text-gray-400 mb-8 text-lg">Join Dubai's most dedicated fitness community. No excuses, no limits. Just results.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-brand-black border border-brand-teal flex items-center justify-center text-brand-teal text-xl mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold uppercase mb-1">Location</h4>
+                                <p class="text-gray-400">Oud Metha, Dubai<br>United Arab Emirates</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-brand-black border border-brand-teal flex items-center justify-center text-brand-teal text-xl mr-4 flex-shrink-0">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold uppercase mb-1">Phone</h4>
+                                <a href="tel:+971585240247" class="text-gray-400 hover:text-brand-teal transition-colors">+971 58 524 0247</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-brand-black border border-brand-teal flex items-center justify-center text-brand-teal text-xl mr-4 flex-shrink-0">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold uppercase mb-1">Hours</h4>
+                                <p class="text-gray-400">Open 24 Hours / 7 Days</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4">
+                        <a href="https://wa.me/971585240247" target="_blank" class="bg-green-500 text-white px-6 py-3 font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-green-600 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i> Book on WhatsApp
+                        </a>
+                        <a href="tel:+971585240247" class="border border-white text-white px-6 py-3 font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-white hover:text-black transition-colors">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="h-96 bg-gray-800 relative overflow-hidden border border-gray-700">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.0!2d55.2654!3d25.2386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE0JzE5LjAiTiA1NcKwMTUnNTUuNCJF!5e0!3m2!1sen!2sae!4v1699999999999!5m2!1sen!2sae" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-black border-t border-gray-800 pt-12 pb-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-2xl font-display font-bold tracking-wider mb-4">
+                        <span class="text-white">247</span><span class="text-brand-teal">GYM</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-sm">The Fitness District in Oud Metha. Dubai's premier 24/7 fitness community for those who refuse to compromise on their goals.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/247gymdxb" target="_blank" class="w-10 h-10 bg-gray-800 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 flex items-center justify-center text-white hover:bg-brand-teal hover:text-black transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold uppercase mb-4 text-white">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-brand-teal transition-colors">About Us</a></li>
+                        <li><a href="#classes" class="hover:text-brand-teal transition-colors">Classes</a></li>
+                        <li><a href="#trainers" class="hover:text-brand-teal transition-colors">Trainers</a></li>
+                        <li><a href="#pricing" class="hover:text-brand-teal transition-colors">Membership</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold uppercase mb-4 text-white">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Oud Metha, Dubai, UAE</li>
+                        <li><a href="tel:+971585240247" class="hover:text-brand-teal transition-colors">+971 58 524 0247</a></li>
+                        <li>Open 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">&copy; 2024 247 GYM. All rights reserved.</p>
+                <p class="text-gray-600 text-xs mt-2 md:mt-0">Designed for the dedicated.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="fixed bottom-0 left-0 w-full bg-brand-black/95 border-t border-brand-teal p-4 md:hidden z-40 nav-blur flex justify-between items-center gap-4">
+        <a href="tel:+971585240247" class="flex-1 border border-white text-white text-center py-3 font-bold uppercase text-sm">Call</a>
+        <a href="https://wa.me/971585240247" class="flex-1 bg-brand-teal text-black text-center py-3 font-bold uppercase text-sm">Join Now</a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-black/95', 'nav-blur', 'shadow-lg');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-brand-black/95', 'nav-blur', 'shadow-lg', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Timetable Data
+        const timetableData = {
+            mon: [
+                { time: '06:00 - 07:00', class: 'HIIT Blast' },
+                { time: '18:00 - 19:00', class: 'MMA Basics' },
+                { time: '19:00 - 20:00', class: 'Powerlifting' },
+                { time: '20:00 - 21:00', class: 'Night Warrior' }
+            ],
+            tue: [
+                { time: '06:00 - 07:00', class: 'Strength 101' },
+                { time: '18:00 - 19:00', class: 'CrossFit' },
+                { time: '19:00 - 20:00', class: 'MMA Advanced' },
+                { time: '20:00 - 21:00', class: 'Night Warrior' }
+            ],
+            wed: [
+                { time: '06:00 - 07:00', class: 'Boxing' },
+                { time: '18:00 - 19:00', class: 'MMA Basics' },
+                { time: '19:00 - 20:00', class: 'Powerlifting' },
+                { time: '20:00 - 21:00', class: 'Night Warrior' }
+            ],
+            thu: [
+                { time: '06:00 - 07:00', class: 'HIIT Blast' },
+                { time: '18:00 - 19:00', class: 'CrossFit' },
+                { time: '19:00 - 20:00', class: 'MMA Advanced' },
+                { time: '20:00 - 21:00', class: 'Night Warrior' }
+            ],
+            fri: [
+                { time: '06:00 - 07:00', class: 'Yoga Flow' },
+                { time: '18:00 - 19:00', class: 'Boxing' },
+                { time: '19:00 - 20:00', class: 'Kettlebell' },
+                { time: '20:00 - 21:00', class: 'Open Mat' }
+            ],
+            sat: [
+                { time: '06:00 - 07:00', class: 'Open Gym' },
+                { time: '18:00 - 19:00', class: 'Strength Camp' },
+                { time: '19:00 - 20:00', class: 'Cardio Kick' }
+            ],
+            sun: [
+                { time: '06:00 - 07:00', class: 'Open Gym' },
+                { time: 'All Day', class: 'Rest & Recovery' }
+            ]
+        };
+
+        // Mobile Timetable Function
+        function showDay(day) {
+            // Update buttons
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                if (btn.dataset.day === day) {
+                    btn.classList.remove('bg-gray-800', 'text-white');
+                    btn.classList.add('bg-brand-teal', 'text-black');
+                } else {
+                    btn.classList.add('bg-gray-800', 'text-white');
+                    btn.classList.remove('bg-brand-teal', 'text-black');
+                }
+            });
+
+            // Update content
+            const container = document.getElementById('mobile-timetable');
+            const classes = timetableData[day];
+            const dayNames = {
+                mon: 'Monday', tue: 'Tuesday', wed: 'Wednesday', 
+                thu: 'Thursday', fri: 'Friday', sat: 'Saturday', sun: 'Sunday'
+            };
+            
+            let html = <h3 class="text-brand-teal font-bold uppercase mb-4 text-lg">${dayNames[day]}</h3>;
+            
+            classes.forEach(session => {
+                html += `
+                    <div class="flex justify-between items-center p-4 bg-brand-black border border-gray-800">
+                        <span class="text-brand-teal font-bold">${session.time}</span>
+                        <span class="text-white">${session.class}</span>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Initialize Monday
+        showDay('mon');
+
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for fade-in
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
